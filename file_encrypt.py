@@ -7,10 +7,19 @@ argumentList = sys.argv[1:]
 
 options = "hmo:"
 
-long_options = ["md5", "sha256", "encrypt_file"]
+long_options = ["md5", "sha256", "encrypt_file", "decrypt"]
 
 file_name = "file_encrypt.py"
 inputFileName = input("Enter search path: ")
+
+try:
+    # parsing argument
+    arguments, values = getopt.getopt(argumentList, options, long_options)
+
+    for currentArgument, currentValue in arguments:
+
+        if currentArgument in ("-md5", "--sha256", "--encrypt", "--decrypt"):
+            
 def find_files(filename, search_path):
     result = []
 
