@@ -1,5 +1,6 @@
 import hashlib
 import os
+from cryptography.fernet import Fernet
 
 file_name = "file_encrypt.py"
 #inputFileName = input("Enter search path: ")
@@ -24,5 +25,17 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
+def fernet_compute():
+    key = Fernet.generate_key()
+
+    f = Fernet(key=
+    token = f.encrypt(b"welcome to geeksforgeeks")
+
+    print(token)
+
+    d = f.decrypt(token)
+
+    print(d)
+
 print(compute_md5(file_name))
-print(compute_sha256(file_name))
+fernet_compute()
