@@ -1,9 +1,16 @@
 import hashlib
 import os
+import getopt, sys
 from cryptography.fernet import Fernet
 
+argumentList = sys.argv[1:]
+
+options = "hmo:"
+
+long_options = ["md5", "sha256", "encrypt_file"]
+
 file_name = "file_encrypt.py"
-#inputFileName = input("Enter search path: ")
+inputFileName = input("Enter search path: ")
 def find_files(filename, search_path):
     result = []
 
@@ -25,17 +32,5 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
-def fernet_compute():
-    key = Fernet.generate_key()
-
-    f = Fernet(key=
-    token = f.encrypt(b"welcome to geeksforgeeks")
-
-    print(token)
-
-    d = f.decrypt(token)
-
-    print(d)
-
 print(compute_md5(file_name))
-fernet_compute()
+print(compute_sha256(file_name))
