@@ -10,6 +10,8 @@ options = "hmo:"
 long_options = ["One", "Two", "Three", "Four", "=Five"]
 
 file_name = input("Enter file to search for: ")
+message = "some secret message".encode()
+#https://www.thepythoncode.com/article/encrypt-decrypt-files-symmetric-python
 
 
 try:

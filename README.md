@@ -5,6 +5,7 @@ SHA1 Secure Hash Algorithm
 
 file system with input("file search")<p>
     import os
+    import getopt
 
 https://www.geeksforgeeks.org/how-to-encrypt-and-decrypt-strings-in-python/
 import logging
@@ -13,4 +14,6 @@ import logging
 2.) Output encrypted file (md5)# cryptography_prog_2022<p>
 3.) Python can encrypt passwords, files, <p>
 4.) cryptography.fernet import Fernet (then decrypt)<p>
-4.) Use command line arguments (getopt)<p>
+5.) Use command line arguments (getopt)<p>
+6.) Message encryption
+7.) File encryption
