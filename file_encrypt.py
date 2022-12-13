@@ -28,10 +28,10 @@ try:
             print ("Displaying file_name:", print(compute_sha256(file_name)))
 
         elif currentArgument in ("-encrypt", "--four"):
-            print ("Encrypt file")
+            print ("Encrypt file", write_key())
 
         elif currentArgument in ("-decrypt", "--five"):
-            print ("Decrypt file")
+            print ("Decrypt file", read_key())
 
         else:
             exit(0)
@@ -62,3 +62,18 @@ def compute_sha256(file_name):
         bytes = f.read() # read entire file as bytes
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
+
+def write_key():
+
+    """ Generate Key and save it into a file
+    """
+
+    key = Fernet.generate_key()
+    with open("key.key", "wb") as key_file:
+        key_file.write(key)
+
+def load_key():
+
+    """ Load the key from the current directory named 'key.key'
+    """
+    return open("key.key", "rb").read()
