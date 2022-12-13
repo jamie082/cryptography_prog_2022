@@ -7,9 +7,10 @@ argumentList = sys.argv[1:]
 
 options = "hmo:"
 
-long_options = ["Help", "md5", "sh256", "=decrypt"]
+long_options = ["One", "Two", "Three", "Four", "=Five"]
 
 file_name = input("Enter file to search for: ")
+
 
 try:
     # parsing argument
@@ -21,10 +22,10 @@ try:
             print ("Displaying Help", print(compute_md5(file_name)))
 
         elif currentArgument in ("-md5", "--two"):
-            print ("Output md5", (compute_md5(file_name)))
+            print ("Output md5", print(compute_md5(file_name)))
 
         elif currentArgument in ("-sha256", "--three"):
-            print ("Displaying file_name:", (compute_sha256(file_name)))
+            print ("Displaying file_name:", print(compute_sha256(file_name)))
 
         elif currentArgument in ("-encrypt", "--four"):
             print ("Encrypt file")
@@ -38,6 +39,7 @@ try:
 except getopt.error as err:
     # output error, and return with an error code
     print (str(err))
+
 def find_files(filename, search_path):
     result = []
 
@@ -45,6 +47,8 @@ def find_files(filename, search_path):
         if filename in files:
             return result.append(root, file_name)
         return result
+
+print(find_files("README.md", "C:\\"))
 
 def compute_md5(file_name):
     hash_md5 = hashlib.md5()
@@ -58,5 +62,3 @@ def compute_sha256(file_name):
         bytes = f.read() # read entire file as bytes
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
-        
-print(find_files(file_name, "search_path"))
