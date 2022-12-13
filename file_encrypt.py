@@ -19,19 +19,26 @@ try:
     for currentArgument, currentValue in arguments:
 
         if currentArgument in ("-h", "--help"):
-            print("Displaying Help", print(compute_md5(file_name))
+            print ("Displaying Help", print(compute_md5(file_name)))
 
-        elif currentArgument in ("-md5"):
-            print ("Output md5", (compute_md5(file_name))
+        elif currentArgument in ("-md5", "--two"):
+            print ("Output md5", (compute_md5(file_name)))
 
-        elif currentArgument in ("-sha256"):
-            print ("Displaying file_name:", (compute_sha256(file_name))
+        elif currentArgument in ("-sha256", "--three"):
+            print ("Displaying file_name:", (compute_sha256(file_name)))
 
-        elif currentArgument in ("-encrypt"):
+        elif currentArgument in ("-encrypt", "--four"):
             print ("Encrypt file")
 
-        elif currentARgument in ("-decrypt"):
+        elif currentArgument in ("-decrypt", "--five"):
             print ("Decrypt file")
+
+        else:
+            exit(0)
+
+except getopt.error as err:
+    # output error, and return with an error code
+    print (str(err))
 def find_files(filename, search_path):
     result = []
 
