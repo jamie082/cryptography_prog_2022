@@ -7,7 +7,7 @@ argumentList = sys.argv[1:]
 
 options = "hmo:"
 
-long_options = ["md5", "sha256", "encrypt_file", "decrypt"]
+long_options = ["Help", "md5", "sh256", "=decrypt"]
 
 file_name = "file_encrypt.py"
 inputFileName = input("Enter search path: ")
@@ -18,8 +18,20 @@ try:
 
     for currentArgument, currentValue in arguments:
 
-        if currentArgument in ("-md5", "--sha256", "--encrypt", "--decrypt"):
-            
+        if currentArgument in ("-h", "--help"):
+            print("Displaying Help", print(compute_md5(file_name))
+
+        elif currentArgument in ("-md5"):
+            print ("Output md5", (compute_md5(file_name))
+
+        elif currentArgument in ("-sha256"):
+            print ("Displaying file_name:", (compute_sha256(file_name))
+
+        elif currentArgument in ("-encrypt"):
+            print ("Encrypt file")
+
+        elif currentARgument in ("-decrypt"):
+            print ("Decrypt file")
 def find_files(filename, search_path):
     result = []
 
@@ -42,4 +54,3 @@ def compute_sha256(file_name):
         print(readable_hash)
 
 print(compute_md5(file_name))
-print(compute_sha256(file_name))
