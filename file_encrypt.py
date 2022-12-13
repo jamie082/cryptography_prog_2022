@@ -9,8 +9,7 @@ options = "hmo:"
 
 long_options = ["Help", "md5", "sh256", "=decrypt"]
 
-file_name = "file_encrypt.py"
-inputFileName = input("Enter search path: ")
+file_name = input("Enter file to search for: ")
 
 try:
     # parsing argument
@@ -42,9 +41,9 @@ except getopt.error as err:
 def find_files(filename, search_path):
     result = []
 
-    for root, dirs, files in os.walk(path):
-        if name in files:
-            return os.path.join(root, inputFileName)
+    for root, dirs, files in os.walk(search_path):
+        if filename in files:
+            return result.append(root, file_name)
         return result
 
 def compute_md5(file_name):
@@ -59,5 +58,5 @@ def compute_sha256(file_name):
         bytes = f.read() # read entire file as bytes
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
-
-print(compute_md5(file_name))
+        
+print(find_files(file_name, "search_path"))
