@@ -61,9 +61,12 @@ def compute_sha256(file_name):
 
 
 def encrypt():
+    
+    with open('mykey.key', 'rb') as mykey:
+        key = mykey.read()
 
-    f = Fernet(key)
-
+    print(key)
+    
     with open('filename.txt', 'rb') as original_file:
         original = original_file.read()
 
@@ -74,8 +77,6 @@ def encrypt():
 
 
 def decrypt ():
-    f = Fernet(key)
-    
     with open('enc_grades.csv', 'rb') as encrypted_file:
         encrypted = encrypted_file.read()
 

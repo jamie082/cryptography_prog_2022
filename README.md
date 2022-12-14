@@ -7,7 +7,7 @@ file system with input("file search")<p>
     import os
     import getopt
 
-https://www.geeksforgeeks.org/how-to-encrypt-and-decrypt-strings-in-python/
+https://python-bloggers.com/2020/09/encrypt-and-decrypt-files-using-python/
 import logging
 from cryptography.fernet import Fernet
 
