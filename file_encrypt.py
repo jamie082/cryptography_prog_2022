@@ -14,33 +14,31 @@ message = "some secret message".encode()
 #https://www.thepythoncode.com/article/encrypt-decrypt-files-symmetric-python
 
 
-try:
-    # parsing argument
-    arguments, values = getopt.getopt(argumentList, options, long_options)
+def main():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "ho:v", ["one", "two", "three", "four", "five"="])"
 
-    for currentArgument, currentValue in arguments:
-
-        if currentArgument in ("-h", "--help"):
-            print ("Displaying Help", print(compute_md5(file_name)))
-
-        elif currentArgument in ("-md5", "--two"):
-            print ("Output md5", print(compute_md5(file_name)))
-
-        elif currentArgument in ("-sha256", "--three"):
-            print ("Displaying file_name:", print(compute_sha256(file_name)))
-
-        elif currentArgument in ("-encrypt", "--four"):
-            print ("Encrypt file", write_key())
-
-        elif currentArgument in ("-decrypt", "--five"):
-            print ("Decrypt file", read_key())
+    except getopt.GetoptError as err:
+        print(err)
+        usage()
+        sys.exit(2)
+    output = None
+    verbose = False
+    for o, a in opts:
+        if o == "-h": # display help
+            verbose = True
+        elif o in ("-md5", "--one"):
+            usage()
+            sys.exit()
+        elif o in ("-sha256", "--two"):
+            output = a
+        elif o in ("-encrypt", "--three"):
+            output = a
+        elif o in ("-decrypt", "--four"):
+            output = a
 
         else:
-            exit(0)
-
-except getopt.error as err:
-    # output error, and return with an error code
-    print (str(err))
+            assert False, "unhandled option"
 
 def find_files(filename, search_path):
     result = []

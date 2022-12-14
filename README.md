@@ -9,11 +9,14 @@ file system with input("file search")<p>
 
 https://www.geeksforgeeks.org/how-to-encrypt-and-decrypt-strings-in-python/
 import logging
+from cryptography.fernet import Fernet
+
+
 
 1). Enter Search file<p>
 2.) Output encrypted file (md5)# cryptography_prog_2022<p>
 3.) Python can encrypt passwords, files, <p>
 4.) cryptography.fernet import Fernet (then decrypt)<p>
 5.) Use command line arguments (getopt)<p>
-6.) Message encryption
-7.) File encryption
+6.) Message encryption<p>
+7.) File encryption<p>
