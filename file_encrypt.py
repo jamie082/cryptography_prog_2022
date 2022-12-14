@@ -10,6 +10,7 @@ options = "hmo:"
 long_options = ["One", "Two", "Three", "Four", "Five"]
 
 message = "some secret message".encode()
+
 #https://www.thepythoncode.com/article/encrypt-decrypt-files-symmetric-python
 
 
@@ -59,15 +60,23 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
+def key_temp():
 
-def encrypt():
-    
-    with open('mykey.key', 'rb') as mykey:
+    f = Fernet(key)
+    with open('my_key', 'rb') as mykey:
         key = mykey.read()
 
-    print(key)
+    print(mykey)
+
+def encrypt():
+
+    f = Fernet(key)
+    with open('my_key', 'rb') as mykey:
+        key = mykey.read()
+
+    print(mykey)
     
-    with open('filename.txt', 'rb') as original_file:
+    with open('grades.csv', 'rb') as original_file:
         original = original_file.read()
 
     encrypted = f.encrypt(original)
@@ -87,3 +96,5 @@ def decrypt ():
 
 if __name__ == "__main__":
     main()
+    
+key_temp()
