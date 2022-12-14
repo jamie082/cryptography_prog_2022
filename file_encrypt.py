@@ -30,7 +30,7 @@ def main():
         elif o in ("-sha256", "--two"):
             print(compute_sha256("file_encrypt.py"))
         elif o in ("-encrypt", "--three"):
-            output = a
+            encrypt_function(output):
         elif o in ("-decrypt", "--four"):
             output = a
         else:
@@ -59,20 +59,30 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
-def write_key():
 
-    """ Generate Key and save it into a file
-    """
+def encrypt():
 
-    key = Fernet.generate_key()
-    with open("key.key", "wb") as key_file:
-        key_file.write(key)
+    f = Fernet(key)
 
-def load_key():
+    with open('filename.txt', 'rb') as original_file:
+        original = original_file.read()
 
-    """ Load the key from the current directory named 'key.key'
-    """
-    return open("key.key", "rb").read()
+    encrypted = f.encrypt(original)
+
+    with open ('enc_grades.csv', 'wb') as encrypted_file:
+        encrypted_file.write(encrypted)
+
+
+def decrypt ():
+    f = Fernet(key)
+    
+    with open('enc_grades.csv', 'rb') as encrypted_file:
+        encrypted = encrypted_file.read()
+
+    decrypted = f.decrypt(encrypted)
+
+    with open('dec_grades.csv', 'wb') as decrypted_file:
+        decrypted_file.write(decrypted)
 
 if __name__ == "__main__":
     main()
