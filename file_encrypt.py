@@ -30,9 +30,9 @@ def main():
         elif o in ("-sha256", "--two"):
             print(compute_sha256("file_encrypt.py"))
         elif o in ("-encrypt", "--three"):
-            encrypt_function(output):
+            encrypt()
         elif o in ("-decrypt", "--four"):
-            output = a
+            decrypt()
         else:
             assert False, "unhandled option"
 
