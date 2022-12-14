@@ -7,36 +7,32 @@ argumentList = sys.argv[1:]
 
 options = "hmo:"
 
-long_options = ["One", "Two", "Three", "Four", "=Five"]
+long_options = ["One", "Two", "Three", "Four", "Five"]
 
-file_name = input("Enter file to search for: ")
 message = "some secret message".encode()
 #https://www.thepythoncode.com/article/encrypt-decrypt-files-symmetric-python
 
 
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "ho:v", ["one", "two", "three", "four", "five"="])"
+        opts, args = getopt.getopt(sys.argv[1:], "ho:v", ["one", "two", "three", "four="])
 
     except getopt.GetoptError as err:
         print(err)
-        usage()
-        sys.exit(2)
+        sys.exit()
     output = None
     verbose = False
     for o, a in opts:
         if o == "-h": # display help
             verbose = True
         elif o in ("-md5", "--one"):
-            usage()
-            sys.exit()
+            print(compute_md5("file_encrypt.py"))
         elif o in ("-sha256", "--two"):
-            output = a
+            print(compute_sha256("file_encrypt.py"))
         elif o in ("-encrypt", "--three"):
             output = a
         elif o in ("-decrypt", "--four"):
             output = a
-
         else:
             assert False, "unhandled option"
 
@@ -77,3 +73,6 @@ def load_key():
     """ Load the key from the current directory named 'key.key'
     """
     return open("key.key", "rb").read()
+
+if __name__ == "__main__":
+    main()
