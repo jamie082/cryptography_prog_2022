@@ -60,9 +60,14 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
+def create_key():
+    with open('mykey.key', 'rb') as mykey:
+        key = mykey.read()
+
+    print(key)
 
 def encrypt():
-    
+
     f = Fernet(key)
 
     with open('mykey.key', 'rb') as mykey:
@@ -76,6 +81,7 @@ def encrypt():
 
     with open ('enc_grades.csv', 'wb') as encrypted_file:
         encrypted_file.write(encrypted)
+
 def decrypt ():
     with open('enc_grades.csv', 'rb') as encrypted_file:
         encrypted = encrypted_file.read()
@@ -87,3 +93,4 @@ def decrypt ():
 
 if __name__ == "__main__":
     main()
+create_key()
