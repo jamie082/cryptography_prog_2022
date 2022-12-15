@@ -60,37 +60,62 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
-def create_key():
-    with open('mykey.key', 'rb') as mykey:
-        key = mykey.read()
+key = Fernet.generate_key()
 
-    print(key)
+with open('mykey.key', 'wb') as mykey:
+    mykey.write(key)
 
-def encrypt():
+class encryptor():
 
-    f = Fernet(key)
+    def key_create(self):
+        key = Fernet.generate_key()
+        return key
 
-    with open('mykey.key', 'rb') as mykey:
-        key = mykey.read()
-    print(mykey)
+    def key_write(self, key, key_name):
+        with open(key_name, 'wb') as mykey:
+            mykey.write(key)
 
-    with open('grades.csv', 'rb') as original_file:
-        original = original_file.read()
+    def key_load(self, key_name):
+        with open(key_name, 'rb') as mykey:
+            key = mykey.read()
+        return key
 
-    encrypted = f.encrypt(original)
+    def encrypt(self, key):
 
-    with open ('enc_grades.csv', 'wb') as encrypted_file:
-        encrypted_file.write(encrypted)
+        f = Fernet(key)
 
-def decrypt ():
-    with open('enc_grades.csv', 'rb') as encrypted_file:
-        encrypted = encrypted_file.read()
+        with open('mykey.key', 'rb') as mykey:
+            key = mykey.read()
+        print(mykey)
 
-    decrypted = f.decrypt(encrypted)
+        with open('grades.csv', 'rb') as original_file:
+            original = original_file.read()
 
-    with open('dec_grades.csv', 'wb') as decrypted_file:
-        decrypted_file.write(decrypted)
+        encrypted = f.encrypt(original)
 
-if __name__ == "__main__":
-    main()
-create_key()
+        with open ('enc_grades.csv', 'wb') as encrypted_file:
+            encrypted_file.write(encrypted)
+
+    def decrypt (self, key):
+        with open('enc_grades.csv', 'rb') as encrypted_file:
+            encrypted = encrypted_file.read()
+
+        decrypted = f.decrypt(encrypted)
+
+        with open('dec_grades.csv', 'wb') as decrypted_file:
+            decrypted_file.write(decrypted)
+
+
+encryptor=encryptor()                
+mtkey=encryptor.key_create()
+encryptor.key_write(mykey, 'mykey.key')
+load_key=encryptor.key_load('mykey.key')
+encryptor.file_encrypt(loaded_key, 'grades.csv', 'enc_grades.csv')
+encryptor.file_decrypt(loaded_key, 'enc_grades.', 'dec_grades.csv')
+
+
+"""
+    if __name__ == "__main__":
+        main()
+        create_key()
+        """
