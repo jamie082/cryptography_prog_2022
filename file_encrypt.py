@@ -65,6 +65,7 @@ key = Fernet.generate_key()
 with open('mykey.key', 'wb') as mykey:
     mykey.write(key)
 
+"""
 class encryptor():
 
     def key_create(self):
@@ -114,7 +115,7 @@ encryptor.file_encrypt(loaded_key, 'grades.csv', 'enc_grades.csv')
 encryptor.file_decrypt(loaded_key, 'enc_grades.', 'dec_grades.csv')
 
 
-"""
+
     if __name__ == "__main__":
         main()
         create_key()
