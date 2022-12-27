@@ -13,6 +13,11 @@ message = "some secret message".encode()
 
 #https://www.thepythoncode.com/article/encrypt-decrypt-files-symmetric-python
 
+key = Fernet.generate_key()
+fernet = Fernet(key)
+
+message = "hello"
+
 
 def main():
     try:
@@ -34,6 +39,8 @@ def main():
             encrypt()
         elif o in ("-decrypt", "--four"):
             decrypt()
+        elif o in ("--encmessage"):
+            encMessage()
         else:
             assert False, "unhandled option"
 
@@ -60,10 +67,14 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest();
         print(readable_hash)
 
-key = Fernet.generate_key()
+def encMessage():
+    encMessage = fernet.encrypt(message.encode())
+    print(encMessage)
 
 with open('mykey.key', 'wb') as mykey:
     mykey.write(key)
+
+
 
 """
 class encryptor():
@@ -114,9 +125,10 @@ load_key=encryptor.key_load('mykey.key')
 encryptor.file_encrypt(loaded_key, 'grades.csv', 'enc_grades.csv')
 encryptor.file_decrypt(loaded_key, 'enc_grades.', 'dec_grades.csv')
 
+"""
 
+def create_key():
+    key1 = Fernet(Fernet.generate_key())
 
-    if __name__ == "__main__":
-        main()
-        create_key()
-        """
+if __name__ == "__main__":
+    create_key()
