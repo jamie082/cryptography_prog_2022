@@ -129,6 +129,10 @@ encryptor.file_decrypt(loaded_key, 'enc_grades.', 'dec_grades.csv')
 
 def create_key():
     key1 = Fernet(Fernet.generate_key())
+    key2 = Fernet(Fernet.generate_key())
+    f = MultiFernet([key1, key2])
+    token = f.encrypt(b"Secret message!")
+    
 
 if __name__ == "__main__":
     create_key()
