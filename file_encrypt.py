@@ -1,7 +1,7 @@
 import hashlib
 import os
 import getopt, sys
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet, MultiFernet
 
 argumentList = sys.argv[1:]
 
@@ -18,6 +18,15 @@ fernet = Fernet(key)
 
 message = "hello"
 
+def create_key(): # print string key
+    key1 = Fernet(Fernet.generate_key())
+    key2 = Fernet(Fernet.generate_key())
+    f = MultiFernet([key1, key2])
+    token = f.encrypt(b"Secret message!")
+    print(token)
+
+def decrypt_token():
+    f.decrypt(token)
 
 def main():
     try:
@@ -36,9 +45,9 @@ def main():
         elif o in ("-sha256", "--two"):
             print(compute_sha256("file_encrypt.py"))
         elif o in ("-encrypt", "--three"):
-            encrypt()
+            create_key()
         elif o in ("-decrypt", "--four"):
-            decrypt()
+            decrypt_token()
         elif o in ("--encmessage"):
             encMessage()
         else:
@@ -127,12 +136,8 @@ encryptor.file_decrypt(loaded_key, 'enc_grades.', 'dec_grades.csv')
 
 """
 
-def create_key():
-    key1 = Fernet(Fernet.generate_key())
-    key2 = Fernet(Fernet.generate_key())
-    f = MultiFernet([key1, key2])
-    token = f.encrypt(b"Secret message!")
-    
+
+
 
 if __name__ == "__main__":
     create_key()
