@@ -19,8 +19,22 @@ fernet = Fernet(key)
 
 message = "hello"
 
+with open('mykey.key', 'wb') as mykey:
+    mykey.write(key)
+
 def usage():
     print ("This is the help menu")
+
+def create_key(): # print string key
+    key1 = Fernet(Fernet.generate_key())
+    key2 = Fernet(Fernet.generate_key())
+    f = MultiFernet([key1, key2])
+    token = f.encrypt(b"Secret message!")
+    print (token)
+
+def decrypt_token():
+    token = f.decrypt(token)
+    print (token)
 
 def main():
     try:
@@ -62,17 +76,7 @@ def compute_sha256(file_name):
         readable_hash = hashlib.sha256(bytes).hexdigest()
         print(readable_hash)
 
-def create_key(): # print string key
-    key1 = Fernet(Fernet.generate_key())
-    key2 = Fernet(Fernet.generate_key())
-    f = MultiFernet([key1, key2])
-    token = f.encrypt(b"Secret message!")
 
-def decrypt_token():
-    f.decrypt(token)
-
-with open('mykey.key', 'wb') as mykey:
-    mykey.write(key)
 
 if __name__ == "__main__":
     main()
