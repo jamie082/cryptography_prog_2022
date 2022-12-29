@@ -19,7 +19,8 @@ fernet = Fernet(key)
 
 message = "hello"
 
-
+def usage():
+    print ("This is the help menu")
 
 def main():
     try:
@@ -41,9 +42,9 @@ def main():
             print(compute_md5("file_encrypt.py"))
         elif o in ("-sha256", "--two"):
             print(compute_sha256("file_encrypt.py"))
-        elif o in ("-encrypt", "--three"):
+        elif o in ("-encrypt", "--three"):  # encrypt string
             create_key()
-        elif o in ("-decrypt", "--four"):
+        elif o in ("-decrypt", "--four"):  # decrypt string
             decrypt_token()
         else:
             assert False, "unhandled option"
