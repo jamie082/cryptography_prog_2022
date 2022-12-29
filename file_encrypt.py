@@ -25,14 +25,18 @@ with open('mykey.key', 'wb') as mykey:
 def usage():
     print ("This is the help menu")
 
-def create_key(): # print string key
+def create_token(): # print string key
     key1 = Fernet(Fernet.generate_key())
     key2 = Fernet(Fernet.generate_key())
     f = MultiFernet([key1, key2])
+    global token
     token = f.encrypt(b"Secret message!")
-    print (token)
+    print(token)
 
 def decrypt_token():
+    key1 = Fernet(Fernet.generate_key())
+    key2 = Fernet(Fernet.generate_key())
+    f = MultiFernet([key1, key2])
     token = f.decrypt(token)
     print (token)
 
@@ -57,7 +61,7 @@ def main():
         elif o in ("-sha256", "--two"):
             print(compute_sha256("file_encrypt.py"))
         elif o in ("-encrypt", "--three"):  # encrypt string
-            create_key()
+            create_token()
         elif o in ("-decrypt", "--four"):  # decrypt string
             decrypt_token()
         else:
@@ -75,8 +79,6 @@ def compute_sha256(file_name):
         bytes = f.read() # read entire file as bytes
         readable_hash = hashlib.sha256(bytes).hexdigest()
         print(readable_hash)
-
-
 
 if __name__ == "__main__":
     main()
