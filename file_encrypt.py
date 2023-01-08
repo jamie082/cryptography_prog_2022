@@ -17,8 +17,6 @@ fernet = Fernet(key)
 
 message = "hello"
 
-with open('mykey.key', 'wb') as mykey:
-    mykey.write(key)
 
 def usage():
     print ("This is the help menu")
@@ -34,8 +32,6 @@ def decrypt_token():
     key1 = Fernet(Fernet.generate_key())
     key2 = Fernet(Fernet.generate_key())
     f = MultiFernet([key1, key2])
-    token = f.decrypt(token)
-    print (token)
 
 def main():
     try:
