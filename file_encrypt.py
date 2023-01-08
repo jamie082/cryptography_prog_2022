@@ -12,26 +12,23 @@ long_options = ["One", "Two", "Three", "Four"]
 
 message = "some secret message".encode()
 
-key = Fernet.generate_key()
-fernet = Fernet(key)
-
-message = "hello"
-
-
 def usage():
-    print ("This is the help menu")
+    print ("This is the help menu, -h")
 
 def create_token(): # print string key
     key1 = Fernet(Fernet.generate_key())
     key2 = Fernet(Fernet.generate_key())
     f = MultiFernet([key1, key2])
     token = f.encrypt(b"Secret message!")
-    print(token)
+    print(token) # three
+
 
 def decrypt_token():
     key1 = Fernet(Fernet.generate_key())
     key2 = Fernet(Fernet.generate_key())
     f = MultiFernet([key1, key2])
+    decrypted_data = f.decrypt(token)
+    print("After Decryption: ", decrypted_data.decode())
 
 def main():
     try:
