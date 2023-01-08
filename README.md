@@ -3,18 +3,16 @@ verification and digital signatires.  MD5 is based on a hash function that verif
 
 SHA1 Secure Hash Algorithm
 
-file system with input("file search")<p>
     import os
     import getopt
 
-https://python-bloggers.com/2020/09/encrypt-and-decrypt-files-using-python/
 import logging
 from cryptography.fernet import Fernet
 
 Fernet encryption algorithm
 
-1.) Encrypt string, encrypt file (Python)
-2.) Output encrypted file (md5)# cryptography_prog_2022<p>
+1.) Encrypt and decrypt string, encrypt file (Python)
+2.) Output encrypted md5 hash# cryptography_prog_2022<p>
 3.) Python can encrypt passwords, files, <p>
 4.) cryptography.fernet import Fernet (then decrypt)<p>
-5.) Use command line arguments (getopt)<p>
+5.) Show example usage of command line arguments (getopt)<p>
