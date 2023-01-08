@@ -11,12 +11,10 @@ https://python-bloggers.com/2020/09/encrypt-and-decrypt-files-using-python/
 import logging
 from cryptography.fernet import Fernet
 
+Fernet encryption algorithm
 
-
-1). Enter Search file<p>
+1.) Encrypt string, encrypt file (Python)
 2.) Output encrypted file (md5)# cryptography_prog_2022<p>
 3.) Python can encrypt passwords, files, <p>
 4.) cryptography.fernet import Fernet (then decrypt)<p>
 5.) Use command line arguments (getopt)<p>
-6.) Message encryption<p>
-7.) File encryption<p>

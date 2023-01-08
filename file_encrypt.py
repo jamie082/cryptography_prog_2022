@@ -12,8 +12,6 @@ long_options = ["One", "Two", "Three", "Four"]
 
 message = "some secret message".encode()
 
-#https://www.thepythoncode.com/article/encrypt-decrypt-files-symmetric-python
-
 key = Fernet.generate_key()
 fernet = Fernet(key)
 
@@ -29,7 +27,6 @@ def create_token(): # print string key
     key1 = Fernet(Fernet.generate_key())
     key2 = Fernet(Fernet.generate_key())
     f = MultiFernet([key1, key2])
-    global token
     token = f.encrypt(b"Secret message!")
     print(token)
 
